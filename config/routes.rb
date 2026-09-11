@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  get "/products", to: "products#index"
+  # Defines the root path route ("/")
+  root "products#index"
 
-  get "/products/new", to: "products#new"
+  get "/products", to: "products#index", as: "products"
+
+  get "/products/new", to: "products#new", as: "new_product"
   post "/products", to: "products#create"
 
-  get "/products/:id", to: "products#show"
+  get "/products/:id", to: "products#show", as: "product"
 
-  get "/products/:id/edit", to: "products#edit"
+  get "/products/:id/edit", to: "products#edit", as: "edit_product"
   patch "/products/:id", to: "products#update"
   put "/products/:id", to: "products#update"
 
@@ -21,7 +24,4 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"333
 end
